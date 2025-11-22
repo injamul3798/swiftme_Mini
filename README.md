@@ -2,6 +2,10 @@
 
 A production-grade FastAPI application that generates personalized freelance proposals using **LangChain**, **RAG (Retrieval-Augmented Generation)**, and **GPT-4o**.
 
+
+https://github.com/user-attachments/assets/e8fed273-e89c-4fe1-bff9-0f843fd55268
+
+
 ## Features
 
 - **RAG-Powered Matching**: ChromaDB vector database for semantic profile search
