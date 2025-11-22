@@ -8,6 +8,7 @@ from fastapi import FastAPI, Request, status
 from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
+from fastapi.staticfiles import StaticFiles
 from loguru import logger
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -87,8 +88,8 @@ settings = get_settings()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=settings.CORS_ORIGINS,
-    allow_credentials=True,
+    allow_origins=["*"],  # Allow all origins (including file://)
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
     expose_headers=["X-Correlation-ID"],
@@ -226,8 +227,11 @@ app.include_router(profile.router)
 app.include_router(proposal.router)
 app.include_router(history.router)
 
+# Serve frontend static files
+app.mount("/", StaticFiles(directory="frontend", html=True), name="frontend")
 
-@app.get("/", response_model=dict[str, str])
+
+@app.get("/api", response_model=dict[str, str])
 async def root() -> dict[str, str]:
     """Root endpoint with API information.
 

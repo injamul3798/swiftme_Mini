@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swiftme Mini - Smart Proposal Generator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🚀 Swiftme Mini</h1>
+            <p class="subtitle">AI-Powered Job Proposal Generator</p>
+        </header>
+
+        <!-- Tab Navigation -->
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="profile">Setup Profile</button>
+            <button class="tab-btn" data-tab="generate">Generate Proposal</button>
+            <button class="tab-btn" data-tab="history">History</button>
+        </div>
+
+        <!-- Profile Setup Tab -->
+        <div class="tab-content active" id="profile-tab">
+            <h2>Freelancer Profile Setup</h2>
+            <form id="profile-form">
+                <div class="form-group">
+                    <label for="profile-id">Profile ID *</label>
+                    <input type="text" id="profile-id" required placeholder="e.g., freelancer_john_123">
+                </div>
+
+                <div class="form-group">
+                    <label for="name">Name *</label>
+                    <input type="text" id="name" required placeholder="John Doe">
+                </div>
+
+                <div class="form-group">
+                    <label for="skills">Skills (comma-separated) *</label>
+                    <input type="text" id="skills" required placeholder="React, Node.js, Python, AI/ML">
+                </div>
+
+                <div class="form-group">
+                    <label for="experience">Experience *</label>
+                    <textarea id="experience" required rows="4" placeholder="5 years of full-stack development..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="projects">Past Projects (one per line)</label>
+                    <textarea id="projects" rows="4" placeholder="AI-Powered Chrome Extension&#10;E-commerce Platform"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="rate">Hourly Rate ($)</label>
+                    <input type="number" id="rate" placeholder="75">
+                </div>
+
+                <div class="form-group">
+                    <label for="availability">Availability</label>
+                    <input type="text" id="availability" placeholder="Available 30-40 hours/week">
+                </div>
+
+                <button type="submit" class="btn btn-primary">💾 Save Profile</button>
+            </form>
+            <div id="profile-status" class="status"></div>
+        </div>
+
+        <!-- Generate Proposal Tab -->
+        <div class="tab-content" id="generate-tab">
+            <h2>Generate Proposal</h2>
+            <form id="proposal-form">
+                <div class="form-group">
+                    <label for="gen-profile-id">Profile ID *</label>
+                    <input type="text" id="gen-profile-id" required placeholder="freelancer_john_123">
+                </div>
+
+                <div class="form-group">
+                    <label for="job-title">Job Title *</label>
+                    <input type="text" id="job-title" required placeholder="Chrome Extension Developer Needed">
+                </div>
+
+                <div class="form-group">
+                    <label for="job-description">Job Description *</label>
+                    <textarea id="job-description" required rows="6" placeholder="Looking for a developer to build a Chrome extension..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="budget">Budget Range</label>
+                    <input type="text" id="budget" placeholder="$1,500-$2,500">
+                </div>
+
+                <button type="submit" class="btn btn-primary">✨ Generate Proposal</button>
+            </form>
+
+            <div id="generation-status" class="status"></div>
+
+            <!-- Streaming Output -->
+            <div id="proposal-output" class="proposal-output" style="display: none;">
+                <h3>Generated Proposal</h3>
+                <div id="proposal-text" class="proposal-text"></div>
+                <div id="proposal-metadata" class="metadata"></div>
+                <button id="copy-btn" class="btn btn-secondary">📋 Copy Proposal</button>
+            </div>
+        </div>
+
+        <!-- History Tab -->
+        <div class="tab-content" id="history-tab">
+            <h2>Proposal History</h2>
+            <div class="form-group">
+                <label for="history-profile-id">Profile ID</label>
+                <input type="text" id="history-profile-id" placeholder="freelancer_john_123">
+                <button id="load-history-btn" class="btn btn-primary">🔍 Load History</button>
+            </div>
+            <div id="history-status" class="status"></div>
+            <div id="history-list" class="history-list"></div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

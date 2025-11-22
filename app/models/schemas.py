@@ -13,7 +13,7 @@ class FreelancerProfile(BaseModel):
     name: str = Field(..., min_length=1, max_length=200, description="Freelancer name")
     skills: list[str] = Field(..., min_length=1, description="List of skills")
     experience: str = Field(
-        ..., min_length=10, max_length=5000, description="Experience description"
+        ..., min_length=1, max_length=5000, description="Experience description"
     )
     past_projects: list[str] = Field(
         default_factory=list, description="List of past project descriptions"
