@@ -254,7 +254,10 @@ GET /api/v1/proposal/history?profile_id=freelancer_john_doe_123&limit=5&offset=0
 ## Usage Examples
 
 ### Python Client (Streaming)
-
+  Now access frontend at:
+  - http://localhost:8000 (frontend UI)
+  - http://localhost:8000/docs (API docs)
+  - http://localhost:8000/health (health check)
 ```python
 import httpx
 import json
